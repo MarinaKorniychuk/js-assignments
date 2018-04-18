@@ -22,9 +22,11 @@
  *    'Sun, 17 May 1998 03:00:00 GMT+01' => Date()
  */
 function parseDataFromRfc2822(value) {
-   return new Date(value);
+    throw new Error('Not implemented');
+}  
+/*   return new Date(value);
 }
-
+*/
 /**
  * Parses an ISO 8601 string date representation into date value
  * For ISO 8601 date specification refer to : https://en.wikipedia.org/wiki/ISO_8601
