@@ -69,13 +69,15 @@ function getPowerFunction(exponent) {
  *   getPolynom()      => null
  */
 function getPolynom(...args) {
-    return function(x) {
+    throw new Error('Not implemented');
+}
+/*    return function(x) {
         return args.reduce((res, k, i) => {
             return res + k * Math.pow(x, args.length - i - 1);
         }, 0);
     }
 }
-
+*/
 
 /**
  * Memoizes passed function and returns function
