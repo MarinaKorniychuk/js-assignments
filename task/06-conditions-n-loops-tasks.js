@@ -326,7 +326,7 @@ function isBracketsBalanced(str) {
         brackets.push(str[0]);
     }
     for (let i = 1; i < str.length; i++) {
-        if (opened.includes(str[i])) {
+        if (opened.indexOf(str[i]) != -1) {
             brackets.push(str[i]);
             continue;
         }
@@ -445,12 +445,20 @@ function toNaryString(num, n) {
  *   ['/web/favicon.ico', '/web-scripts/dump', '/webalizer/logs'] => '/'
  */
 function getCommonDirectoryPath(pathes) {
-     let newNum = '';
-    while (num > 0) {
-        newNum = newNum + (num % n);
-        num = Math.floor(num / n);
+    pathes = pathes.map(a => a.split('/'));
+    let i;
+    for (i = 0; i < pathes[0].length; i++) {
+        let allEquals = true;
+        for (let j = 0; j < pathes.length; j++) {
+            if (pathes[0][i] != pathes[j][i]) {
+                allEquals = false;
+            }
+        }
+        if (!allEquals) {
+            break;
+        }
     }
-    return reverseString(newNum);
+    return i == 0 ? '' : pathes[0].slice(0, i).join('/') + '/';
 }
 
 /**
@@ -518,7 +526,7 @@ function getMatrixProduct(m1, m2) {
  *    [    ,   ,    ]]
  *
  */
-function evaluateTicTacToePosition(position) {
+function evaluateTicTacToePosition(p) {
     function validCell(i, j) {
         return p[i][j] == 'X' || p[i][j] == '0';
     }
