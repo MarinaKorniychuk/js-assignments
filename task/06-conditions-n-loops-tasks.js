@@ -127,8 +127,12 @@ function isTriangle(a,b,c) {
  *   { top:20, left:20, width: 20, height: 20 }    =>  false
  *
  */
-function doRectanglesOverlap(rect1, rect2) {
-    throw new Error('Not implemented');
+function doRectanglesOverlap(r1, r2) {
+    if (r1.left > (r2.left + r2.width) || r2.left > (r1.left + r1.width))
+        return false;
+    if (r1.top > (r2.top + r2.height) || r2.top > (r1.top + r1.height))
+        return false;
+    return true;
 }
 
 
@@ -428,7 +432,7 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-    throw new Error('Not implemented');
+    return num.toString(n);
 }
 
 
